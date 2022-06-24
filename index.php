@@ -1,10 +1,22 @@
 <?php
   if (session_status() !== 1)
+  {
     session_destroy();
     unset($_POST);
+  }
+
   session_start();
 
   include_once "./_form/serve.php";
+
+  $call = new call();
+
+  if($call->check() >= 12)
+  {
+    header("Location: ./display.php");
+  }
+
+  
 
 ?>
 
